@@ -1,0 +1,41 @@
+《长安十二时辰》数据分析报告
+2019-7-29-------2019-8-3
+
+文件结构
+changan12
+-spider_changan  # scrapy 
+-data  # ./data/raw youku.json, douban.json
+-output
+-resouce  # font, stopwords, img
+-log
+-backup
+
+获取数据:
+使用 scrapy 分别爬取了优酷以及豆瓣有关长安十二时辰的评论, 具体详情在另外的两个介绍文件中.
+
+分析数据:
+读取数据: pandas.read_json: orient, lines
+评论情感倾向分析 sentiments: snownlp, 0-0.3--low, 0.3--0.7--middle, 0.7-1--high
+统计表情: emoji
+分词 + 词云: jieba + wordcloud, 精确分词, wordcloud 空格分词, wordcloud 不显示的词 stopwords, 蒙版 mask, 字体/颜色
+
+发现：
+雷佳音(张晓敬)演技在线, 易烊千玺(李必)颜值在线, 演技有所欠缺 
+用户 id 各不相同: 未登录的情况
+感情倾向均值: 0.64
+感情倾向均值下降最多的是 16 集: 陆三, 徐宾
+感情倾向均值最低的是 24 集 0.53: 闻染, 拖沓, 演技, 为什么, 太子, 龙波
+
+输出结果:
+统计 Emoji 频数的风玫瑰图, wordcloud 显示, 从计数频数
+各集评论数量直方图, 高中低的分布直方图以及词云显示
+各集评论感情倾向均值条形统计图
+16, 24 集关键词 wordcloud 显示
+
+改进:
+snownlp 自己训练
+应该 使用 16, 24 集中低分值的统计而不是使用全部数据
+
+额外学习: seaborn
+风玫瑰图: 极坐标, 自定义 map 函数.
+雷达图: thetagrids, 雷达标签, 中文显示.
