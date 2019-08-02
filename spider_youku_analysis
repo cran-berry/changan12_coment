@@ -1,0 +1,31 @@
+名称：7/30爬取优酷网《长安十二时辰》评论
+分析首页：https://v.youku.com/v_show/id_XNDI0NDYyNjk1Mg==.html?spm=a2h0j.11185381.listitem_page1.5~A&&s=efbfbd78efbfbd5cefbf
+评论被渲染，抓包，selenium（同步），splash（异步）
+抓包https://p.comments.youku.com/ycp/comment/pc/commentList?
+'jsoncallback': 'n_commentList',
+'app': '100-DDwODVkv',
+'objectId': 视频id,
+'objectType': '1',
+'listType': '0',
+'currentPage': 评论当前页数,
+'pageSize': '30',
+'sign': '3cc9070aaf97fa3ce953370376e1f87d',
+'time': '1564466034'
+视频id需要打开每个视频用正则提取js中videoId
+评论总页数需要打开每个评论index获取totalPage
+注：包页不能直接转化为json，需要16：-1
+注意网页自带去重
+
+获得属性
+    source = scrapy.Field()  # Youku or douban
+    num = scrapy.Field()  # 集数
+    videoId = scrapy.Field()
+    type = scrapy.Field()  # comment or hot
+    comment = scrapy.Field()  # 评论内容
+    user_id = scrapy.Field()
+    total_size = scrapy.Field()  # 评论数量
+    total_page = scrapy.Field()  # 评论页数
+    current_page = scrapy.Field()
+
+获得67608条记录, json保存本地，mongodb保存到数据库
+不足：评论后的跟评没有爬取

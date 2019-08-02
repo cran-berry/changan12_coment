@@ -1,0 +1,44 @@
+名称：7/31爬取豆瓣网《长安十二时辰》评论
+分析首页：https://movie.douban.com/subject/26849758/comments?status=P
+每一页结构：https://movie.douban.com/subject/26849758/comments?start=20&limit=20&sort=new_score&status=P
+发现携带Cookie可以爬取更多
+'ll': '118159',
+'bid': 'ozpD4ra2sRg',
+'trc_cookie_storage': 'taboola%2520global%253Auser-id%3Ddcc3d8a5-bb17-46d5-a0d9-ace871551abb-tuct437f5e4',
+'_vwo_uuid_v2': 'D1E10684B56ED98CAAFA54D58FE70CF7B|33e71162d84e6f35dd0d75d2dbfe0fab',
+'douban-fav-remind': '1',
+'__yadk_uid': '7GpK9cGvlQwoeFIZPWq5qSP11davINts',
+'viewed': '"26885117"',
+'gr_user_id': '0e2cc2ce-9ec5-4f6b-afdb-d1c17945afc4',
+'__utmc': '30149280',
+'__utmz': '30149280.1564539093.4.3.utmcsr=baidu|utmccn=(organic)|utmcmd=organic',
+'__utmc': '223695111',
+'__utmz': '223695111.1564541432.5.5.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/search',
+'__gads': 'ID=52e06f5a0e520216:T=1564541432:S=ALNI_MawsYUXAL7C_JQWpEBCMk7eMvkrWw',
+'push_noty_num': '0',
+'push_doumail_num': '0',
+'__utmv': '30149280.20080',
+'ap_v': '0,6.0',
+'_pk_ref.100001.4cf6': '%5B%22%22%2C%22%22%2C1564555103%2C%22https%3A%2F%2Fwww.douban.com%2Fsearch%3Fq%3D%25E9%2595%25BF%25E5%25AE%2589%25E5%258D%2581%25E4%25BA%258C%22%5D',
+'_pk_ses.100001.4cf6': '*',
+'__utma': '30149280.637885398.1564373092.1564541430.1564555103.6',
+'__utma': '223695111.2139866426.1564373092.1564541432.1564555103.6',
+'__utmb': '223695111.0.10.1564555103',
+'__utmt': '1',
+'__utmb': '30149280.1.10.1564555103',
+'_pk_id.100001.4cf6': '17c2663f856257dd.1564373091.5.1564555429.1564543179.',
+'dbcl2': '200806227:Odqw//YoH1s'
+
+获得属性
+    source = scrapy.Field()  # Youku or douban
+    user_id = scrapy.Field()
+    score = scrapy.Field()
+    time = scrapy.Field()
+    vote = scrapy.Field()
+    comment = scrapy.Field()  # 评论内容
+    url = scrapy.Field()
+
+获得500条记录, json保存本地，mongodb保存到数据库
+不足：数量不足
+
+
